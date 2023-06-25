@@ -42,4 +42,4 @@ Poussez les modifications vers votre dépôt distant :
 Créez une Pull Request pour demander l'incorporation de vos modifications.
 
 ## Auteurs
-Votre Nom (@93rod) - lien vers votre profil GitHub https://github.com/93rod
+@93rod - https://github.com/93rod
