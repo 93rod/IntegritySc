@@ -11,7 +11,7 @@ IntegritySc est un outil de détection de paquets malveillants dans les fichiers
 
 ## Installation
 
-git clone https://github.com/votre-utilisateur/integritysc.git
+git clone https://github.com/93rod/IntegritySc.git
 cd integritysc
 pip install -r requirements.txt
 
