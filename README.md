@@ -6,7 +6,7 @@ IntegritySc est un outil de détection de paquets malveillants dans les fichiers
 
 - Analyse des fichiers téléchargés à la recherche d'indicateurs de paquets malveillants.
 - Comparaison des fichiers avec une liste de signatures connues de paquets malveillants.
-- Extraction des métadonnées des paquets .deb, .rpm et .zip.
+- Extraction des métadonnées des paquets .deb, .rpm et .zip. ( en cours ... )
 - Génération d'un rapport des résultats de l'analyse.
 
 ## Installation
