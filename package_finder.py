@@ -24,10 +24,10 @@ def load_signatures(file_path):
         signatures = set(line.strip() for line in f)
     return signatures
 
-def analyser_dependances(my_projet, signatures_connues):
+def analyser_dependances(dossier_projet, signatures_connues):
     """Analyse les dépendances d'un projet"""
     resultats = []
-    for dossier_racine, sous_dossiers, fichiers in os.walk(my_projet):
+    for dossier_racine, sous_dossiers, fichiers in os.walk(dossier_projet):
         for fichier in fichiers:
             path_file = os.path.join(dossier_racine, fichier)
             if analyz_file(path_file, signatures_connues):
@@ -44,9 +44,9 @@ def rapport(resultats):
         print("Aucun indicateur de paquet malveillant trouvé.")
 
 def main():
-    my_projet = "/home/uzi/Téléchargements/"
+    dossier_projet = "/home/uzi/Téléchargements/"
     signatures_connues = load_signatures("/home/uzi/Programmation/python/Uzi-M_PackageFinde/MD5 Hahses.txt")
-    resultats = analyser_dependances(my_projet, signatures_connues)
+    resultats = analyser_dependances(dossier_projet, signatures_connues)
 
     rapport(resultats)
 
