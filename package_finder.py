@@ -9,11 +9,11 @@ def cal_hash(fichier):
             hasher.update(bloc)
     return hasher.hexdigest()
 
-def analyz_file(fichier, signatures_connues):
+def analyz_file(fichier, mal_hash):
     """Analyse un fichier à la recherche d'indicateurs de paquet malveillant"""
     hash_file = cal_hash(fichier)
 
-    if hash_file in signatures_connues:
+    if hash_file in mal_hash:
         print(f"Indicateur de paquet malveillant trouvé dans le fichier : {fichier}")
         return True
     return False
@@ -24,13 +24,13 @@ def load_signatures(file_path):
         signatures = set(line.strip() for line in f)
     return signatures
 
-def analyser_dependances(dossier_projet, signatures_connues):
+def analyser_dependances(scan_repo, mal_hash):
     """Analyse les dépendances d'un projet"""
     resultats = []
-    for dossier_racine, sous_dossiers, fichiers in os.walk(dossier_projet):
+    for racine, sous_dossiers, fichiers in os.walk(scan_repo):
         for fichier in fichiers:
-            path_file = os.path.join(dossier_racine, fichier)
-            if analyz_file(path_file, signatures_connues):
+            path_file = os.path.join(racine, fichier)
+            if analyz_file(path_file, mal_hash):
                 resultats.append(path_file)
     return resultats
 
@@ -44,9 +44,9 @@ def rapport(resultats):
         print("Aucun indicateur de paquet malveillant trouvé.")
 
 def main():
-    dossier_projet = "/home/uzi/Téléchargements/"
-    signatures_connues = load_signatures("/home/uzi/Programmation/python/Uzi-M_PackageFinde/MD5 Hahses.txt")
-    resultats = analyser_dependances(dossier_projet, signatures_connues)
+    scan_repo = "~/Téléchargements/" #ajouter le dossier que vous voulez scanner  "
+    mal_hash = load_signatures("~/IntegritySc/MD5 Hahses.txt")
+    resultats = analyser_dependances(scan_repo, mal_hash)
 
     rapport(resultats)
 
